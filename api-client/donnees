@@ -1,0 +1,83 @@
+/**-------------------------GET ALL MESSAGES---------------------------------------------*/
+app.get("/api-client/messages", (req, res, next) => {
+  const messages = [
+    {
+      _id: "aoisdghdfsg",
+      body: "Je suis la",
+      type: "chat",
+      sender: "23795984565@c.us",
+      recipient: "23798653225@c.us",
+    },
+    {
+      _id: "vhstrgfhtrhs",
+      body: "Non je ne suis pas la",
+      type: "chat",
+      sender: "23795984565@c.us",
+      recipient: "23798653225@c.us",
+    },
+  ];
+
+  res.status(200).json(messages);
+
+/*
+  Message.find()
+    .then(messages => res.status(200).json(messages))
+    .catch(error => res.status(400).json({ error }));
+*/
+});
+/**--------------------------------------------------------------------------------------*/
+
+/**------------------------GET ALL MESSAGE OF SENDER------------------------------------------------*/
+/*app.get('/api-client/message/:sender', (req, res, next) => {
+    Message.find({ sender: req.params.sender })
+      .then(messages => res.status(200).json(messages))
+      .catch(error => res.status(404).json({ error }));
+  });*/
+/**--------------------------------------------------------------------------------------*/
+
+/**------------------------GET A MESSAGE BY ID------------------------------------------------*/
+/*app.get('/api-client/message/:id', (req, res, next) => {
+  Message.findOne({ _id: req.params.id })
+    .then(message => res.status(200).json(message))
+    .catch(error => res.status(404).json({ error }));
+});*/
+/**--------------------------------------------------------------------------------------*/
+
+/**------------------------POST A MESSAGE------------------------------------------------*/
+/*app.post("/api-client/message", (req, res, next) => {
+  console.log(req.body);
+  res.status(201).json({
+    message: "Objet cree !",
+  });
+});
+
+app.post('/api-client/message', (req, res, next) => {
+  //delete req.body._id;
+  const message = new Message({
+      body: req.body.body,
+      type: req.body.type,
+      sender: req.body.sender,
+      recipient: req.body.recipient
+  });
+
+  message.save()
+    .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
+    .catch(error => res.status(400).json({ error }));
+}); */
+/**--------------------------------------------------------------------------------------*/
+
+/**-----------------------PUT A MESSAGE--------------------------------------------------*/
+app.put("/api-client/message/:id", (req, res, next) => {
+  Message.updateOne({ _id: req.params.id }, { ...req.body, _id: req.params.id })
+    .then(() => res.status(200).json({ message: 'Objet modifié !'}))
+    .catch(error => res.status(400).json({ error }));
+});
+/**--------------------------------------------------------------------------------------*/
+
+/**-----------------------DELETE A MESSAGE-----------------------------------------------*/
+app.delete("/api-client/message/:id", (req, res, next) => {
+  Message.deleteOne({ _id: req.params.id })
+    .then(() => res.status(200).json({ message: 'Objet supprimé !'}))
+    .catch(error => res.status(400).json({ error }));
+});
+/**--------------------------------------------------------------------------------------*/
