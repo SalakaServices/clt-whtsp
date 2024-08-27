@@ -1,5 +1,5 @@
 const {client} = require("../../client");
-const Message = require("../models/Message");
+const Message = require("../../models/Message");
 
 // const { Location, Poll, List, Buttons } = require('../node_modules/whatsapp-web.js/index.js');
 // const handleMessageUpdate = async (msg) => {

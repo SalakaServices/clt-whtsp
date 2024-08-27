@@ -1,4 +1,4 @@
-const Message = require("../models/Message");
+const Message = require("../../models/Message");
 const {client} = require('../../client')
 
 client.on('message_create', async (msg) => {

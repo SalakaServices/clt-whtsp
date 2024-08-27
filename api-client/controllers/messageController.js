@@ -1,5 +1,5 @@
-const message = require('../models/Message') ;
-const {client} = require('../client');
+const message = require('../../models/Message') ;
+const {client} = require('../../client');
 
 /**-------------------------GET ALL MESSAGES---------------------------------------------*/
 exports.getAllMessages = (req, res, next) => {
