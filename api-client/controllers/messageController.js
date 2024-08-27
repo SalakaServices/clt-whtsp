@@ -65,7 +65,7 @@ exports.getOneMessage = (req, res, next) => {
 exports.createMessage = async (req, res, next) => {
   delete req.body._id;
 
-  await client.sendMessage(req.body.sender, req.body.content); 
+  await client.sendMessage(req.body.recipient, req.body.content); 
 };
 /**--------------------------------------------------------------------------------------*/
 
